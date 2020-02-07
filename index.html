@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CodeJam - Image API</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+          crossorigin="anonymous">
+  </head>
+
+  <body class="container">
+    <header class="header">
+      <i class="fas fa-bars"></i>
+      <h1 class="header__title">CodeJam - Image API</h1>
+      <i class='fa fa-ellipsis-v'></i>
+    </header>
+
+    <main class="main">
+      <div>
+        <ul class="panel" id="menu">
+          <li class="panel__item current__tool"  id="bucket" onclick="changeTool(this)">
+            <i class="fas fa-fill-drip"></i>
+            <p class="panel__item__text">Fill bucket</p>
+          </li>
+          <li class="panel__item current__tool" id="choose" onclick="changeTool(this)">
+            <i class="fas fa-eye-dropper"></i>
+            <p class="panel__item__text">Choose color</p>
+          </li>
+          <li class="panel__item current__tool" id="pencil" onclick="changeTool(this)">
+            <i class="fas fa-pencil-alt"></i>
+            <p class="panel__item__text">Pencil</p>
+          </li>
+        </ul>
+        <ul class="panel">
+          <li class="panel__item" onclick="currentClick()">
+            <input type="color" name="favcolor" value="#008000" class="choose-color" id="color-pick">
+            <div class="panel__item__circle circle-green" id="currentC" style="background-color: #008000;"></div>
+            <p class="panel__item__text">Current color</p>
+          </li>
+          <li class="panel__item" id="secBtn" onclick="btnPrev()">
+            <div class="panel__item__circle" id="prevC" style="background-color: #FFEB3B;"></div>
+            <p class="panel__item__text">Prev color</p>
+          </li>
+          <li class="panel__item" onclick="btnRed()">
+            <div class="panel__item__circle circle-red" id="redC"></div>
+            <p class="panel__item__text">Red</p>
+          </li>
+          <li class="panel__item" onclick="btnBlue()">
+            <div class="panel__item__circle circle-blue" id="blueC"></div>
+            <p class="panel__item__text">Blue</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="image-API-buttons">
+        <button class="button" id="loadButton">Load image</button>
+        <div class="canvas-size">
+          <button class="button canvas-current" id="128x128">128x128</button>
+          <button class="button canvas-current" id="256x256">256x256</button>
+          <button class="button canvas-current" id="512x512">512x512</button>
+        </div>
+        <input class="town-input" id="townInput" placeholder="Enter city">
+        <button class="button" id="townButton">Change town</button>
+        <button class="button" id="blackAndWhite">Black and White</button>
+      </div>
+
+      <canvas class="canvas" id="cs"
+              onclick="getCoords(event)"
+              onmousemove="allowed_pencil(event)"
+              onmousedown="init_pencil()"
+              onmouseup="close_pencil()"
+              onmouseout="close_pencil()">
+      </canvas>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
